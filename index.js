@@ -1,16 +1,28 @@
-const http = require('http');
 const path = require('path');
 const express = require('express');
 
 const app = express();
 
+const router = express.Router();
+require('dotenv').config();
+const morgan = require('morgan');
+app.use(morgan('dev'))
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: false
+}))
 
-const server = http.createServer((request,response)=>{
-  response.writeHead(200,{'content-type':'application/json'})  
+
+const port = process.env.PORT || 3000;
+
+// const server = http.createServer((request,response)=>{
+//   response.writeHead(200,{'content-type':'application/json'})  
 
    
+// })
+app.get('/',(req,res)=>{
+    res.status(200).json({confirmation:'success', })
 })
-
-server.listen(3000, ()=>{
-    console.log('server listening on port 3000 ')
+app.listen(port, ()=>{
+    console.log(`server listening on port ${port}`)
 })

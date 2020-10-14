@@ -16,6 +16,23 @@ module.exports ={
                 games
             })
         }
+    },
+    getSingleGame:(req, res) => {
+        let foundGame = games.filter((game) => {
+            if (game.id === req.params.id) {
+                return res.status(200).json({
+                    confirmation: 'success',
+                    games
+                });
+            }
+        });
+        if (!foundGame.length)
+            return res
+                .status(400)
+                .json({
+                    confirmation: 'fail',
+                    message: 'Game Does Not Exist'
+                });
     }
 }
 

@@ -49,7 +49,7 @@
 // Add one to the length of that array to make a new id like we did in class
 
 // MORE CHALLENGING OPTION ID CREATION: (for createGame route)
-// in your createGame route create the id dynamically by using uuidv4:
+// in your createGame route create the id dynamically by using idv4:
 // Nanoid is an easy way to make fake id numbers for prototyping
 // Read docs: https://www.npmjs.com/package/nanoid
 

@@ -2,27 +2,15 @@ const express = require('express')
 const router = express.Router();
 
 
-const games = require('../models/games.js')
+// const games = require('../models/games.js')
 
 
-
+const{}=require('../controllers/gameControllers.js')
 
 
 
 // get all
-router.get('/all-games', (req, res) => {
-    if (games.name !== games.params.name) {
-        return res.status(400).json(games)({
-            confirmation: 'fail',
-            message: 'no games found'
-        })
-    } else {
-        return res.status(200).json({
-            confirmation: 'success',
-            games
-        })
-    }
-})
+router.get('/all-games', )
 
 
 //getSingleGame

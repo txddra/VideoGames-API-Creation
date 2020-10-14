@@ -12,6 +12,7 @@ app.use(express.urlencoded({
   extended: false
 }))
 
+const games =require('./models/games.js')
 
 const port = process.env.PORT || 3000;
 
@@ -21,7 +22,7 @@ const port = process.env.PORT || 3000;
    
 // })
 app.get('/',(req,res)=>{
-    res.status(200).json({confirmation:'success', })
+    res.status(200).json({confirmation:'success',games })
 })
 app.listen(port, ()=>{
     console.log(`server listening on port ${port}`)

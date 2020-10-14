@@ -5,32 +5,16 @@ const router = express.Router();
 // const games = require('../models/games.js')
 
 
-const{}=require('../controllers/gameControllers.js')
+const{getAllGames, getSingleGame}=require('../controllers/gameControllers.js')
 
 
 
 // get all
-router.get('/all-games', )
+router.get('/all-games',getAllGames)
 
 
 //getSingleGame
-router.get('/single-game/:id', (req, res) => {
-    let foundGame = games.filter((game) => {
-        if (game.id === req.params.id) {
-            return res.status(200).json({
-                confirmation: 'success',
-                games
-            });
-        }
-    });
-    if (!foundGame.length)
-        return res
-            .status(400)
-            .json({
-                confirmation: 'fail',
-                message: 'Game Does Not Exist'
-            });
-});
+router.get('/single-game/:id',getSingleGame );
 
 //createGame
 router.post('/create-game', (req, res) => {

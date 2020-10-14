@@ -11,7 +11,7 @@ const games = require('../models/games.js')
 
 // get all
 router.get('/all-games',(req,res)=>{
-    if(games !== games){
+  if(games.name !== games.params.name){
 return res.status(400).json(games)({confirmation:'fail',message:'no games found'})
     }else{
         return res.status(200).json({ confirmation: 'success', games }

@@ -5,7 +5,7 @@ const router = express.Router();
 // const games = require('../models/games.js')
 
 
-const{getAllGames, getSingleGame}=require('../controllers/gameControllers.js')
+const{getAllGames, getSingleGame,createGame}=require('../controllers/gameControllers.js')
 
 
 
@@ -17,27 +17,7 @@ router.get('/all-games',getAllGames)
 router.get('/single-game/:id',getSingleGame );
 
 //createGame
-router.post('/create-game', (req, res) => {
-    //check if game exists
-    let existingGame = games.filter(
-      (foundGame) => foundGame.name === req.body.description
-    );
-    if (existingGame.length) {
-      return res.status(400).send('Game Already Exists');
-    }
-  
-    //create a new game object
-    const newGame = {};
-  
-    //values for games based on req.body inputs in postman
-    newUser.name = req.body.name;
-    newUser.description = req.body.description;
-    newUser.id = String(games.length + 1);
-    // add game to array
-    games.push(newGame);
-    //return the new game
-    return res.status(200).json({ confirmation: 'success', newGame });
-  });
+router.post('/create-game', createGame);
   
 
   //update Game

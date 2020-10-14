@@ -54,19 +54,39 @@ router.post('/create-game', (req, res) => {
       return res.status(400).send('Game Already Exists');
     }
   
-    //create a new user object
+    //create a new game object
     const newGame = {};
   
-    //values for newUser based on req.body inputs in postman
+    //values for games based on req.body inputs in postman
     newUser.name = req.body.name;
     newUser.description = req.body.description;
     newUser.id = String(games.length + 1);
-    // add user to array
+    // add game to array
     games.push(newGame);
-    //return the new user
+    //return the new game
     return res.status(200).json({ confirmation: 'success', newGame });
   });
   
+
+  //update Game
+  router.put('/update-game/:id', (req, res) => {
+    //grab the inputted information
+    let updatedGame = req.body;
+  
+    //search the games array
+    games.filter((foundGame) => {
+      //find the game
+      if (foundGame.id === req.params.id) {
+        //change values for game if inputted
+        foundGame.name = updatedGame.name ? updatedGame.name : foundGame.name;
+        foundGame.description = updatedGame.description
+          ? updatedGame.description
+          : foundGame.description;
+      }
+    });
+    //return array of games
+    return res.status(200).json({ message: 'Game Updates', games });
+  });
 
 
 
